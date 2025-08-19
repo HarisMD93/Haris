@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Haris Mohammad — Portfolio 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-font: 'Nunito', Arial, sans-serif;
+      --heading-font: 'Montserrat', Arial, sans-serif;
+      --primary-color: #179be9;
+      --secondary-color: #23b68d;
+      --text-color: #21294c;
+      --background-gradient: linear-gradient(120deg, #eaf6ff 0%, #dafbe5 75%);
+      --card-gradient: linear-gradient(101deg, #f7fcff 0%, #f4fff8 100%);
+      --box-shadow: 0 18px 60px rgba(52, 108, 128, 0.19);
+      --border-radius-lg: 40px;
+      --border-radius-md: 20px;
+      --border-radius-sm: 14px;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      background: var(--background-gradient);
+      font-family: var(--primary-font);
+      color: var(--text-color);
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .outer {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      width: 96vw;
+      max-width: 1500px;
+      height: 54vw;
+      max-height: 840px;
+      aspect-ratio: 16/9;
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--box-shadow);
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      animation: fadeIn .9s;
+      overflow: hidden;
+    }
+
+    .nav {
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background: #f7fcfb;
+      border-radius: 0 0 38px 38px;
+      box-shadow: 0 6px 18px rgba(44, 120, 255, 0.06);
+      padding: 18px 0 8px 0;
+      margin-bottom: 0;
+      z-index: 2;
+    }
+
+    .nav-btn {
+      font-family: var(--heading-font);
+      font-weight: 700;
+      font-size: 1.25em;
+      letter-spacing: .01em;
+      color: #2198db;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 14px 36px;
+      margin: 0;
+      border-radius: var(--border-radius-sm);
+      transition: .18s;
+    }
+
+    .nav-btn.active, .nav-btn:hover {
+      background: linear-gradient(98deg, #e7faff 70%, #eaffea 100%);
+      color: var(--secondary-color);
+    }
+
+    .content {
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      height: 100%;
+      overflow-y: auto;
+    }
+
+    .page {
+      display: none;
+      width: 100%;
+      height: 100%;
+      padding: 20px 35px;
+      animation: fadeInUp 1.2s;
+      box-sizing: border-box;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: .18;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Home Page */
+    .main-flex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+      padding-top: 40px;
+      height: 100%;
+    }
+
+    .profile-img-home {
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 10px 48px rgba(33, 90, 188, 0.24);
+    }
+
+    .title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: flex-start;
+      max-width: 750px;
+    }
+
+    h1 {
+      font-family: var(--heading-font);
+      color: var(--primary-color);
+      font-size: 3.69em;
+      font-weight: 800;
+      letter-spacing: -.01em;
+      margin: .12em 0 .1em 0;
+    }
+
+    .pill {
+      background: #d3fcf9;
+      color: #14bc80;
+      padding: 10px 36px;
+      border-radius: 16px;
+      font-weight: 800;
+      display: inline-block;
+      font-size: 1.4em;
+      margin: 0 8px 0 0;
+    }
+
+    .quote {
+      font-size: 1.28em;
+      font-style: italic;
+      color: #203e4b;
+      background: linear-gradient(102deg, #edfdff 70%, #e0fbe6 100%);
+      border-left: 7px solid var(--primary-color);
+      border-radius: 17px;
+      padding: 28px 34px;
+      margin: 38px 0 15px 0;
+    }
+
+    /* General Content Styles */
+    h2 {
+      color: var(--secondary-color);
+      font-size: 2.23em;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .card {
+      background: var(--card-gradient);
+      border-radius: 30px;
+      padding: 34px 37px;
+      margin-bottom: 20px;
+      font-size: 1.18em;
+      box-shadow: 0 6px 34px rgba(23, 150, 180, 0.04);
+      min-width: 350px;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    ul {
+      margin: 23px 0 0 35px;
+      font-size: 1.18em;
+      padding-left: 0;
+      list-style-position: inside;
+    }
+
+    li {
+      margin-bottom: 13px;
+    }
+
+    .flex-block {
+      display: flex;
+      gap: 50px;
+      margin-top: 20px;
+      align-items: center;
+    }
+
+    /* How I Work Page */
+    .how-img-round {
+      width: 270px;
+      height: 270px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 1px 32px #bbb;
+      display: block;
+      margin-right: 0;
+      margin-left: 24px;
+    }
+
+    /* Media Page */
+    .song-card, .short-card {
+      background: #fff7fa;
+      border-radius: 19px;
+      padding: 19px 17px;
+      box-shadow: 0 2px 9px rgba(203, 82, 152, 0.10);
+      margin: 0 0 18px 0;
+      font-size: 1.13em;
+    }
+
+    .song-title {
+      color: #cd2b7b;
+      font-size: 1.15em;
+      font-weight: 700;
+    }
+
+    .short-title {
+      font-size: 1.08em;
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+
+    /* Contact Page */
+    .contact-info {
+      background: #c6fff2;
+      padding: 17px 38px;
+      border-radius: var(--border-radius-md);
+      color: #066666;
+      font-weight: 700;
+      font-size: 1.3em;
+      margin: 58px auto 0;
+      display: inline-block;
+      text-align: center;
+    }
+
+    /* General Link & Text Styles */
+    a {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-decoration: none;
+      transition: .2s;
+    }
+
+    a:hover {
+      color: #13b672;
+    }
+
+    small {
+      color: #969696;
+      font-size: 0.9em;
+    }
+
+    h3 {
+      color: #14bc80;
+      font-weight: 700;
+      margin-bottom: 11px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 950px) {
+      .outer {
+        height: auto;
+        max-height: 90vh;
+        aspect-ratio: auto;
+      }
+      .content, .page {
+        padding: 0 15px;
+      }
+      .main-flex, .flex-block {
+        flex-direction: column;
+        gap: 22px;
+        align-items: center;
+        text-align: center;
+      }
+      .title-block {
+        align-items: center;
+      }
+      .card {
+        min-width: 0;
+        max-width: 100%;
+      }
+      .profile-img-home {
+        width: 200px;
+        height: 200px;
+      }
+      .how-img-round {
+        width: 170px;
+        height: 170px;
+        margin-left: 0;
+      }
+      h1 {
+        font-size: 2.5em;
+      }
+      .nav {
+        gap: 5px;
+        flex-wrap: wrap;
+        padding: 10px;
+      }
+      .nav-btn {
+        font-size: 1em;
+        padding: 10px 15px;
+      }
+    }
+  </style>
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+        btn.removeAttribute('aria-current');
+      });
+
+      const newPage = document.getElementById(pageId);
+      const newBtn = document.getElementById("btn-" + pageId);
+
+      if (newPage) newPage.classList.add('active');
+      if (newBtn) {
+        newBtn.classList.add('active');
+        newBtn.setAttribute('aria-current', 'page');
+      }
+    }
+    window.onload = function() {
+      showPage('home');
+    };
+  </script>
+</head>
+<body>
+<div class="outer">
+  <div class="nav">
+    <button class="nav-btn active" id="btn-home" onclick="showPage('home')" aria-current="page">Home</button>
+    <button class="nav-btn" id="btn-projects" onclick="showPage('projects')">Projects</button>
+    <button class="nav-btn" id="btn-style" onclick="showPage('style')">How I Work</button>
+    <button class="nav-btn" id="btn-team" onclick="showPage('team')">Team & Mindset</button>
+    <button class="nav-btn" id="btn-media" onclick="showPage('media')">Songs & Shorts</button>
+    <button class="nav-btn" id="btn-contact" onclick="showPage('contact')">Contact</button>
+  </div>
+  <div class="content">
+    <div class="page active" id="home">
+      <div class="main-flex">
+        <img src="Haris BNW.jpg" alt="A black and white portrait of Haris Mohammad" class="profile-img-home">
+        <div class="title-block">
+          <h1>Haris Mohammad</h1>
+          <div>
+            <span class="pill">Ops Leader</span>
+            <span class="pill">Automation Specialist</span>
+            <span class="pill">AI-integrator</span>
+          </div>
+          <div class="quote">Welcome! Discover a journey of impact, automation, creativity, and learning.</div>
+        </div>
+      </div>
+    </div>
+    <div class="page" id="projects">
+      <h2>Portfolio & Projects</h2>
+      <div class="card">
+        <ul>
+          <li><a href="https://harismd93.github.io/harismohammad/" target="_blank">Portfolio: See My Journey</a></li>
+          <li><a href="https://sites.google.com/view/autoworldai/home" target="_blank">AutoWorld AI — Productivity Suite</a></li>
+          <li><a href="https://harismd93.github.io/IELTSmate/" target="_blank">IELTSmate Masterclass — IELTS & University Prep</a></li>
+          <li><a href="https://harismd93.github.io/GlowVibe-BD/" target="_blank">GlowVibe BD — Youth Community</a></li>
+          <li><a href="https://sites.google.com/view/universalchempoint/order-page" target="_blank">Order Automation System</a></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Sample Automation Tutorials</h3>
+        <ul>
+          <li><a href="https://youtu.be/TvrIiDqdkjE" target="_blank">Invest 60 Seconds and Build a Task Tracker</a></li>
+          <li><a href="https://youtu.be/b0LwykBboaw" target="_blank">Send Bulk Emails FREE Using Google Sheets</a></li>
+          <li><a href="https://youtu.be/30dEdHA8TmQ" target="_blank">#Upper #Lower #Proper Case Formula in Google Sheets</a></li>
+          <li><a href="https://youtu.be/bjOCufQayWw" target="_blank">Import Data from One Google Sheet to Another</a></li>
+          <li><a href="https://youtu.be/gf6hgp7UbXE" target="_blank">Easy Formulas Google Sheet in Bangla</a></li>
+        </ul>
+        <p>
+          🚀 <b>AutoWorld AI:</b> <a href="https://sites.google.com/view/autoworldai/home" target="_blank">View project (Google Apps Script real-time automation)</a>
+        </p>
+        <p>
+          📄 <a href="https://drive.google.com/file/d/1IlEfaKns7LPqj4ipiQj9hBFEkzE4ZjcY/view" target="_blank">My Resume</a><br>
+          📄 <a href="https://harismd93.github.io/harismohammad" target="_blank">My Portfolio</a>
+        </p>
+      </div>
+    </div>
+    <div class="page" id="style">
+      <h2>How I Work</h2>
+      <div class="card flex-block">
+        <div>
+          <ul>
+            <li>Automated Task Tracker: Reminds me & my team daily until completed</li>
+            <li>Google Sheets + Looker Studio: Automated dashboards for actions/results</li>
+            <li>Email Automation: Scheduled weekly/monthly reports</li>
+            <li>AI-powered ideation & image generation</li>
+            <li>Complete accountability: Every detail tracked & visualized</li>
+          </ul>
+        </div>
+        <img src="Haris.jpg" alt="A color portrait of Haris Mohammad" class="how-img-round">
+      </div>
+    </div>
+    <div class="page" id="team">
+      <h2>Team Leadership & Mindset</h2>
+      <div class="card">
+        <ul>
+          <li>Ownership culture & KPI-driven goals</li>
+          <li>Automated reminders & reporting</li>
+          <li>Support & upskill with automation and AI</li>
+          <li>Transparent communication for team growth</li>
+          <li>Creativity, learning, and adaptation on the go</li>
+        </ul>
+        <div class="quote">
+          "Automation should do the work for you, so you can focus on impact."<br>
+          "Teams grow fastest when each person owns their success."<br>
+          "AI and data-thinking will transform every job—I'm integrating it daily."
+        </div>
+      </div>
+    </div>
+    <div class="page" id="media">
+      <h2>AI-Powered Bangla Songs & 10MS Shorts</h2>
+      <div class="flex-block">
+        <div>
+          <div class="song-card">
+            <div class="song-title">বেঁচে আছি এখনো – Heart-Touching Bengali Sad Song</div>
+            <div>
+              How do you find hope when your heart is broken?<br>
+              🎧 Let the silence between lyrics tell your story too.<br>
+              <small>#SadSong #BanglaMusic #Emotion #BekhayaliMood</small><br>
+              🖤 Listen, share, and let the music heal.<br>
+              <a href="https://youtu.be/GcH2Kd2Jwz0" target="_blank">Listen on YouTube</a>
+            </div>
+          </div>
+          <div class="song-card">
+            <div class="song-title">Chhile Tumi – এক অসম্পূর্ণ ভালবাসার গান 💔</div>
+            <div>
+              Some love stories don’t end—they just change shape.<br>
+              🧡 Lyrics by Haris Mohammad<br>
+              Let the memories and melodies linger in every beat.<br>
+              <small>#ChhileTumi #SadBanglaSong #BrokenHeart #BanglaSong2025</small><br>
+              💬 Tell us what this song means to you!<br>
+              <a href="https://youtu.be/_xZm0-71LcM" target="_blank">Listen on YouTube</a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="short-card">
+            <div class="short-title">Easy Learning Hack</div>
+            <div>
+              ✨ What if learning was this easy?<br>
+              Unlock shortcuts for smarter studies every day!<br>
+              <small>#StudyHacks #10MinuteSchool #StudentLife</small>
+            </div>
+            <a href="https://youtube.com/shorts/xGHbHt03Q4U" target="_blank">View Short</a>
+          </div>
+          <div class="short-card">
+            <div class="short-title">Boost Your Learning</div>
+            <div>
+              🚀 Boost your learning in 40 seconds!<br>
+              One tip today = One step closer to success.<br>
+              <small>#QuickTips #SuccessMindset #BangladeshStudents</small>
+            </div>
+            <a href="https://youtube.com/shorts/LMWWfzbChDg" target="_blank">View Short</a>
+          </div>
+          <div class="short-card">
+            <div class="short-title">English: Would You Mind?</div>
+            <div>
+              💡 Would you mind… ভুল করার দরকার নেই!<br>
+              Get your English right every time—watch this quick tip!<br>
+              <small>#IELTS #English #10MinuteSchool #Shorts</small>
+            </div>
+            <a href="https://www.youtube.com/shorts/lj-Ukl0Jr4U" target="_blank">View Short</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page" id="contact">
+      <div style="text-align: center;">
+        <h2>Contact</h2>
+        <div class="contact-info">
+          📧 harismohammad95@gmail.com &nbsp;|&nbsp; 📞 +880 1957-064973 &nbsp;|&nbsp; Dhaka, Bangladesh
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
